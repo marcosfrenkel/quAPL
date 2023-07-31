@@ -4,10 +4,3 @@
 
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
  R←T._Failed
-
- correct_vector←(1/2*0.5)(1/2*0.5)
- result←#.quapl.mlt.normalize 1 1
-
- R←T.PassesIf result≡correct_vector
-
- R ← T._OK

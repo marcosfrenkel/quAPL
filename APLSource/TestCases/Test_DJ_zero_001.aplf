@@ -1,0 +1,22 @@
+ R←Test_DJ_001(stopFlag batchFlag);⎕TRAP;md;ns;parms
+⍝ Test a 2 qubit DJ algorithm for the zero oracle
+ ⎕ ← 'Hello I am writing this test right here'
+ ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ R←T._Failed
+
+ ⍝ Declaring the objects that I am going to use
+ reg←#.quapl.circuit.reg
+ q1←#.quapl.sng.q0
+ thread_reg←#.quapl.circuit.thread_reg
+ DJ←#.quapl.lib.DJ
+ zero←#.quapl.lib.oracles.zero
+
+ correct_reg←reg 3
+ correct_reg[1;2]←⊂q1
+
+ correct_vector←thread_reg correct_reg
+ result←zero DJ thread_reg reg 2
+
+ →T.PassesIf correct_vector≡result
+
+ R←T._OK

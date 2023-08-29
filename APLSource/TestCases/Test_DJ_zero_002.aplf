@@ -1,6 +1,8 @@
- R←Test_DJ_zero_001(stopFlag batchFlag);⎕TRAP;md;ns;parms
-⍝ Test a 2 qubit DJ algorithm for the zero oracle
+ R←Test_DJ_zero_002(stopFlag batchFlag);⎕TRAP;md;ns;parms
+⍝ Test a 3 qubit DJ algorithm for the zero oracle
  ⎕TRAP←(999 'C' '. ⍝ Deliberate error')(0 'N')
+ ⎕FR ← 1278
+ ⎕PP ← 34
  R←T._Failed
 
  ⍝ Declaring the objects that I am going to use
@@ -8,14 +10,17 @@
  q1←#.quapl.sng.q1
  thread_reg←#.quapl.circuit.thread_reg
  DJ←#.quapl.lib.DJ
+ norm←#.quapl.mlt.normalize
  zero←#.quapl.lib.oracles.zero
 
- correct_reg←reg 3
+ correct_reg←reg 9
  correct_reg[1;2]←⊂q1
 
  correct_vector←thread_reg correct_reg
- result←zero DJ thread_reg reg 2
-
+ result←zero DJ thread_reg reg 7
+ ⎕←result
+ ⎕ ← 'Here comes the normalization'
+⎕ ← 0.5*⍨+/(,result)*2
  →T.PassesIf correct_vector≡result
 
  R←T._OK

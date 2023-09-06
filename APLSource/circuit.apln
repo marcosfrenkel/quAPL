@@ -57,7 +57,7 @@
         midx ← (~(qubits∊idx))/qubits
         ids ← {#.quapl.gates.I}¨midx
         new_idx ← idx,midx
-        new_gtx ← gtx,ids
+        new_gtx ← (⊂gtx),ids
 
         ⍝ Obtain the resulting permutation for the qubit reordering
         new_index ← n_qubits #.quapl.circuit.qrdtotrd (new_idx + 1)

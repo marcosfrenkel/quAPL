@@ -1,0 +1,23 @@
+:Namespace simon
+
+    CNOT ← #.quapl.gates.CNOT
+    stage ← #.quapl.circuit.stage
+
+      s_oracle←{
+        ⍝ Oracle taken from qiskit: https://learn.qiskit.org/course/ch-algorithms/simons-algorithm
+        ⍝ This is an prototype oracle for development
+     
+        ⍝ This takes a 6 qubit vector state where the first 3 qubits should be in the
+        ⍝ |+> state (these are the input qubits) and the last 3 should be in 0
+        ⍝ The secret mask is s = 110
+     
+     
+     
+          stg_ctrl←((0 3 1 4 2 5)(CNOT CNOT CNOT))stage ⍵
+          stg_ctrl←((1 4)(CNOT))stage stg_ctrl
+          stg_ctrl←((1 5)(CNOT))stage stg_ctrl
+          stg_ctrl
+     
+      }
+
+:EndNamespace

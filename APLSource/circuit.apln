@@ -57,7 +57,11 @@
         midx ← (~(qubits∊idx))/qubits
         ids ← {#.quapl.gates.I}¨midx
         new_idx ← idx,midx
-        new_gtx ← (⊂gtx),ids
+        
+        ⍝ If the first axis of gtx is equal to the number of identities in ids, 
+        ⍝ APL will append the ids to each row instead of treating them as a list of arrays.  
+        new_gtx← ((⊂gtx),ids) (⊣⍣((1↑⍴gtx)≡⍴ids)) (gtx,ids)
+        
 
         ⍝ Obtain the resulting permutation for the qubit reordering
         new_index ← n_qubits #.quapl.circuit.qrdtotrd (new_idx + 1)

@@ -1,0 +1,22 @@
+ _SI_←{
+     ⍝ Simon algorithm.
+     ⍝ Takes a vector state in the 0 state.
+     ⍝ Applies the algorithm with the passed oracle and returns the vector state without being measured.
+
+     ⍝ FIXME: For now only the first half of the qubits are the input and second half are the output qubits, later version will be allowed to specify
+     ⍝ ⍵: Vector state in the 0 state. The first half of the vector state are the input qubits.
+     ⍝ ⍺⍺: The oracle that we are utilizing
+
+     H←#.quapl.gates.H
+     stage←#.quapl.circuit.stage
+
+     n_qubits←(2⍟1⌷⍴⍵)
+     in_ind←(⍳(n_qubits÷2))-1
+     out_ind←in_ind+(⍴in_ind)
+
+     stg_ctrl←((in_ind)({H}¨in_ind))
+     mid_state←stg_ctrl stage ⍵
+
+     oracle_state←⍺⍺ mid_state
+     stg_ctrl stage oracle_state
+ }

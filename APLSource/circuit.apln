@@ -60,7 +60,8 @@
         
         ⍝ If the first axis of gtx is equal to the number of identities in ids, 
         ⍝ APL will append the ids to each row instead of treating them as a list of arrays.  
-        new_gtx← ((⊂gtx),ids) (⊣⍣((1↑⍴gtx)≡⍴ids)) (gtx,ids)
+        ⍝ new_gtx← ((⊂gtx),ids) (⊣⍣((1↑⍴gtx)≡⍴ids)) (gtx,ids)
+        new_gtx←((⊂gtx),ids)(⊣⍣(((1↑⍴gtx)≡⍴ids)∧((≡gtx)≡1)))(gtx,ids)
         
 
         ⍝ Obtain the resulting permutation for the qubit reordering

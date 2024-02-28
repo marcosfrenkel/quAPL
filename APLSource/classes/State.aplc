@@ -1,0 +1,13 @@
+:Class State
+    :Field Public Default vs 
+    
+
+    ∇ cons n_qubits
+        :Implements Constructor
+        :Access Public
+        vs ← n_qubits 
+    ∇   
+    
+
+
+:EndClass

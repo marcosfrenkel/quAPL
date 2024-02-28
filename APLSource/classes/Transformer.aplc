@@ -1,0 +1,4 @@
+⍝ The name transformer is a placeholer at the moment. Originally I would have called this operator but
+⍝ I am hesitant of calling it that since operator means very specific things both in quantum and APL
+:Class Transformer
+:EndClass
